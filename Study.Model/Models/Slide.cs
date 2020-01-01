@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Study.Model.Models
 {
     [Table("Slides")]
-    class Slide
+    public class Slide
     {
         [Key]
         public int ID { get; set; }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//Create Base model
 namespace Study.Model.Abstract
 {
     //kế thừa từ Interface: public get;set toàn bộ thuộc tính bên trong interface 
