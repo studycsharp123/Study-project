@@ -10,27 +10,37 @@ using System.Threading.Tasks;
 namespace Study.Model.Models
 {
     [Table("Posts")]
-    public class Post : BaseModel
+    public class Post : Auditable
     {
         [Key]
-        public int ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { set; get; }
+
         [Required]
-        public string Name { get; set; }
+        [MaxLength(256)]
+        public string Name { set; get; }
+
         [Required]
-        public string Alias { get; set; }
+        [MaxLength(256)]
+        [Column(TypeName = "varchar")]
+        public string Alias { set; get; }
+
         [Required]
-        public int CategoryID { get; set; }
-        public string Image { get; set; }
-        public string Description { get; set; }
-        public string Content { get; set; }
-        public bool HomeFlag { get; set; }
-        public bool HotFlag { get; set; }
-        [Required]
-        public int ViewCount { get; set; }
+        public int CategoryID { set; get; }
+
+        [MaxLength(256)]
+        public string Image { set; get; }
+
+        [MaxLength(500)]
+        public string Description { set; get; }
+
+        public string Content { set; get; }
+
+        public bool? HomeFlag { set; get; }
+        public bool? HotFlag { set; get; }
+        public int? ViewCount { set; get; }
 
         [ForeignKey("CategoryID")]
-        public virtual PostCategory PostCategory { get; set; }
-
-        public virtual IEnumerable<PostTag> PostTags { get; set; }
+        public virtual PostCategory PostCategory { set; get; }
     }
 }

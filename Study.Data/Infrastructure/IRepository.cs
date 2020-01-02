@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Study.Data.Infrastructure
 {
     //su dung de dinh nghia cac phuong thuc (method)
+    // T: dai dien cho 1 kieu, o day T duoc dai dien cho class (where T : class)
     public interface IRepository<T> where T : class
     {
         //marks as entity as new

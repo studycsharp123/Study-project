@@ -8,14 +8,20 @@ using System.Threading.Tasks;
 
 namespace Study.Model.Models
 {
-    [Table("Tags")]
+     [Table("Tags")]
     public class Tag
     {
         [Key]
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
+        [MaxLength(50)]
+        [Column(TypeName = "varchar")]
+        public string ID { set; get; }
 
-        public virtual IEnumerable<PostTag> PostTags { get; set; }
+        [MaxLength(50)]
+        [Required]
+        public string Name { set; get; }
+
+        [MaxLength(50)]
+        [Required]
+        public string Type { set; get; }
     }
 }

@@ -12,14 +12,18 @@ namespace Study.Model.Models
     public class PostTag
     {
         [Key]
-        public int PostID { get; set; }
+        [Column(Order = 1)]
+        public int PostID { set; get; }
+
         [Key]
-        public int TagID { get; set; }
+        [Column(TypeName = "varchar",Order =2)]
+        [MaxLength(50)]
+        public string TagID { set; get; }
 
         [ForeignKey("PostID")]
-        public virtual Post Post { get; set; }
-        [ForeignKey("TagID")]
-        public virtual Tag Tag { get; set; }
+        public virtual Post Post { set; get; }
 
+        [ForeignKey("TagID")]
+        public virtual Tag Tag { set; get; }
     }
 }

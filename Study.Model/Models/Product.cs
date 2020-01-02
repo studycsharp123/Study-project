@@ -11,35 +11,43 @@ using System.Xml.Linq;
 namespace Study.Model.Models
 {
     [Table("Products")]
-    public class Product : BaseModel
+    public class Product : Auditable
     {
         [Key]
-        public int ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { set; get; }
+
         [Required]
-        public string Name { get; set; }
+        [MaxLength(256)]
+        public string Name { set; get; }
+
         [Required]
-        public string Alias { get; set; }
+        [MaxLength(256)]
+        public string Alias { set; get; }
+
         [Required]
-        public int CategoryID { get; set; }
-        public string Image { get; set; }
-        public XElement MoreImages { get; set; }
-        [Required]
-        public decimal Price { get; set; }
-        public decimal? Promotion { get; set; }
-        public int? Warranty { get; set; }
-        public string Description { get; set; }
-        public string Content { get; set; }
-        public bool HomeFlag { get; set; }
-        public bool HotFlag { get; set; }
-        public int ViewCount { get; set; }
+        public int CategoryID { set; get; }
+
+        [MaxLength(256)]
+        public string Image { set; get; }
+
+        [Column(TypeName = "xml")]
+        public string MoreImages { set; get; }
+
+        public decimal Price { set; get; }
+
+        public decimal? PromotionPrice { set; get; }
+        public int? Warranty { set; get; }
+
+        [MaxLength(500)]
+        public string Description { set; get; }
+        public string Content { set; get; }
+
+        public bool? HomeFlag { set; get; }
+        public bool? HotFlag { set; get; }
+        public int? ViewCount { set; get; }
 
         [ForeignKey("CategoryID")]
-        public virtual ProductCategory ProductCategories { get; set; }
-        public virtual IEnumerable<OrderDetail> OrderDetails { get; set; }
-        public virtual IEnumerable<ProductTag> ProductTags { get; set; }
-
-
-
-
+        public virtual ProductCategory ProductCategory { set; get; }
     }
 }

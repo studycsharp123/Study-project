@@ -10,22 +10,32 @@ using System.Threading.Tasks;
 namespace Study.Model.Models
 {
     [Table("PostCategories")]
-    public class PostCategory : BaseModel
+    public class PostCategory : Auditable
     {
         [Key]
-        public int ID { get; set; }
-        [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Alias { get; set; }
-        public string Description { get; set; }
-        public int ParentID { get; set; }
-        public int DisplayOrder { get; set; }
-        public string Image { get; set; }
-        [Required]
-        public bool HomeFlag { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { set; get; }
 
-        public virtual IEnumerable<Post> Posts { get; set; }
+        [Required]
+        [MaxLength(256)]
+        public string Name { set; get; }
 
+        [Required]
+        [Column(TypeName = "varchar")]
+        [MaxLength(256)]
+        public string Alias { set; get; }
+
+        [MaxLength(500)]
+        public string Description { set; get; }
+
+        public int? ParentID { set; get; }
+        public int? DisplayOrder { set; get; }
+
+        [MaxLength(256)]
+        public string Image { set; get; }
+
+        public bool? HomeFlag { set; get; }
+
+        public virtual IEnumerable<Post> Posts { set; get; }
     }
 }

@@ -8,25 +8,41 @@ using System.Threading.Tasks;
 
 namespace Study.Model.Models
 {
-    [Table("Orders")]
+     [Table("Orders")]
     public class Order
     {
         [Key]
-        public int ID { get; set; }
-        [Required]
-        public string CustomerName { get; set; }
-        [Required]
-        public string CustomerEmail { get; set; }
-        [Required]
-        public string CustomerMobile { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { set; get; }
 
-        public string CusomerMessage { get; set; }
         [Required]
-        public string PaymentMethod { get; set; }
+        [MaxLength(256)]
+        public string CustomerName { set; get; }
 
-        public string PaymentStatus { get; set; }
-        
-        public virtual IEnumerable<OrderDetail> OrderDetails { get; set; }
+        [Required]
+        [MaxLength(256)]
+        public string CustomerAddress { set; get; }
 
+        [Required]
+        [MaxLength(256)]
+        public string CustomerEmail { set; get; }
+
+        [Required]
+        [MaxLength(50)]
+        public string CustomerMobile { set; get; }
+
+        [Required]
+        [MaxLength(256)]
+        public string CustomerMessage { set; get; }
+
+        [MaxLength(256)]
+        public string PaymentMethod { set; get; }
+
+        public DateTime? CreatedDate { set; get; }
+        public string CreatedBy { set; get; }
+        public string PaymentStatus { set; get; }
+        public bool Status { set; get; }
+
+        public virtual IEnumerable<OrderDetail> OrderDetails { set; get; }
     }
 }

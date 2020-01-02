@@ -8,14 +8,20 @@ using System.Threading.Tasks;
 
 namespace Study.Model.Models
 {
-    [Table("SystemSettings")]
-    public class SystemSetting
+    [Table("SystemConfigs")]
+    public class SystemConfig
     {
         [Key]
-        public int ID { get; set; }
+        public int ID { set; get; }
+
         [Required]
-        public string Code { get; set; }
-        public string ValueString { get; set; }
-        public int ValueInt { get; set; }
+        [Column(TypeName = "varchar")]
+        [MaxLength(50)]
+        public string Code { set; get; }
+
+        [MaxLength(50)]
+        public string ValueString { set; get; }
+
+        public int? ValueInt { set; get; }
     }
 }

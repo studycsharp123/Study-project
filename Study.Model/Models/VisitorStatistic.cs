@@ -12,10 +12,12 @@ namespace Study.Model.Models
     public class VisitorStatistic
     {
         [Key]
-        public int ID { get; set; }
-        [Key]
-        public DateTime VisitedDate { get; set; }
-        [Key]
-        public string IPAddress { get; set; }
+        public Guid ID { set; get; }
+
+        [Required]
+        public DateTime VisitedDate { set; get; }
+
+        [MaxLength(50)]
+        public string IPAddress { set; get; }
     }
 }

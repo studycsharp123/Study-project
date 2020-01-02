@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 namespace Study.Data.Infrastructure
 {
     //thuc thi cac class da duoc dinh nghia trong IRepository
-    public abstract class RepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IRepository<T> where T : class
     {
         //trien khai cac phuong thuc
         #region Properties
@@ -72,6 +72,22 @@ namespace Study.Data.Infrastructure
                 return query.AsQueryable();
             }
             return dataContext.Set<T>().AsQueryable();
+        }
+        public T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null)
+        {
+            return GetAll(includes).FirstOrDefault(expression);
+        }
+        public virtual IQueryable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes = null)
+        {
+            if (includes != null && includes.Count() > 0)
+            {
+                var query = dataContext.Set<T>().Include(includes.Firtst());
+                foreach (var include in includes.Skip(1))
+                    query = query.Include(include);
+                return query.Where<T>(predicate).AsQueryable<T>();
+
+            }
+            return dataContext.Set<T>().Where<T>(predicate).AsQueryable<T>();
         }
         public virtual IQueryable<T> GetMultiPaging(Expression<Func<T, bool>> predicate, out int total, int index = 0, int size = 50, string[] includes = null)
         {

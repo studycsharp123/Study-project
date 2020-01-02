@@ -8,17 +8,22 @@ using System.Threading.Tasks;
 
 namespace Study.Model.Models
 {
-    [Table("ProductTags")]
+     [Table("ProductTags")]
     public class ProductTag
     {
         [Key]
-        public int TagID { get; set; }
-        [Key]
-        public int ProductID { get; set; }
-        [ForeignKey("TagID")]
-        public virtual Tag Tag { get; set; }
-        [ForeignKey("ProductID")]
-        public virtual Product Product { get; set; }
+        [Column(Order = 1)]
+        public int ProductID { set; get; }
 
+        [Key]
+        [Column(TypeName = "varchar", Order = 2)]
+        [MaxLength(50)]
+        public string TagID { set; get; }
+
+        [ForeignKey("ProductID")]
+        public virtual Product Product { set; get; }
+
+        [ForeignKey("TagID")]
+        public virtual Tag Tag { set; get; }
     }
 }
