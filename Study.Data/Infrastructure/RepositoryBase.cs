@@ -78,10 +78,10 @@ namespace Study.Data.Infrastructure
             return GetAll(includes).FirstOrDefault(expression);
         }
         public virtual IQueryable<T> GetMulti(Expression<Func<T, bool>> predicate, string[] includes = null)
-        {
+        { 
             if (includes != null && includes.Count() > 0)
             {
-                var query = dataContext.Set<T>().Include(includes.Firtst());
+                var query = dataContext.Set<T>().Include(includes.First());
                 foreach (var include in includes.Skip(1))
                     query = query.Include(include);
                 return query.Where<T>(predicate).AsQueryable<T>();

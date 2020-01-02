@@ -35,7 +35,7 @@ namespace Study.Data
         public DbSet<Slide> Slides { get; set; }
         public DbSet<SupportOnline> SupportOnlines { get; set; }
 
-        public DbSet<SystemSetting> SystemSettings { get; set; }
+        public DbSet<SystemConfig> SystemConfigs { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<VisitorStatistic> VistorStatistics { get; set; }
 
