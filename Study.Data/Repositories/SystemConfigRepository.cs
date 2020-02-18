@@ -3,7 +3,7 @@ using Study.Model.Models;
 
 namespace Study.Data.Repositories
 {
-    public interface ISystemConfigRepository
+    public interface ISystemConfigRepository : IRepository<SystemConfig>
     {
     }
 

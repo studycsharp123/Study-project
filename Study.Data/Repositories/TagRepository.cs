@@ -3,7 +3,7 @@ using Study.Model.Models;
 
 namespace Study.Data.Repositories
 {
-    public interface ITagRepository
+    public interface ITagRepository : IRepository<Tag>
     {
     }
 

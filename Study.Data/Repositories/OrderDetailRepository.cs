@@ -3,7 +3,7 @@ using Study.Model.Models;
 
 namespace Study.Data.Repositories
 {
-    public interface IOrderDetailRepository
+    public interface IOrderDetailRepository : IRepository<OrderDetail>
     {
     }
 

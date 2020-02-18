@@ -43,13 +43,18 @@ namespace Study.Data.Infrastructure
         {
             dbSet.Remove(entity);
         }
+        public virtual void Delete(Guid Id)
+        {
+            var entity = dbSet.Find(Id);
+            dbSet.Remove(entity);
+        }
         public virtual void DeleteMulti(Expression<Func<T, bool>> where)
         {
             IEnumerable<T> objects = dbSet.Where<T>(where).AsEnumerable();
             foreach (T obj in objects)
                 dbSet.Remove(obj);
         }
-        public virtual T GetSingleById(int Id)
+        public virtual T GetSingleById(Guid Id)
         {
             return dbSet.Find(Id);
         }

@@ -3,7 +3,7 @@ using Study.Model.Models;
 
 namespace Study.Data.Repositories
 {
-    public interface ISupportOnlineRepository
+    public interface ISupportOnlineRepository : IRepository<SupportOnline>
     {
     }
 

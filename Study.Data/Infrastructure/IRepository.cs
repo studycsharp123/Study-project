@@ -17,10 +17,11 @@ namespace Study.Data.Infrastructure
         void Update(T entity);
         //marks an entity to be removed
         void Delete(T entity);
+        void Delete(Guid Id);
         //delete multi records
         void DeleteMulti(Expression<Func<T, bool>> where);
         //get an entity by int Id
-        T GetSingleById(int Id);
+        T GetSingleById(Guid Id);
         T GetSingleByCondition(Expression<Func<T, bool>> expression, string[] includes = null);
         //includes muc dich de them cac bang con
         IQueryable<T> GetAll(string[] includes = null);
