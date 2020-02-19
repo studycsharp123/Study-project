@@ -27,8 +27,8 @@ namespace Study.Service
 
     public class PostService : IPostService
     {
-        IPostRepository _postRepository;
-        IUnitOfWork _unitOfWork;
+        private readonly IPostRepository _postRepository;
+        private readonly IUnitOfWork _unitOfWork;
         public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
         {
             _postRepository = postRepository;
